@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Paa Cash Wallet</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta  name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="icon" href="/images/logo/logo.png" type="image/gif" sizes="32x32">
+    <!-- <link rel="shortcut icon" href="./assets/image/favicon-32x32.png" type="image/gif" sizes="32x32">
+     <link rel="apple-touch-icon" href="./assets/image/apple-touch-icon.png" type="image/gif"> -->
+
+     <link href="/user/user.css" rel="stylesheet" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+       
+
+       
+        
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body style="background-color: rgb(50, 63, 63); color: antiquewhite;">
+   
+
+    
+
+
+    <header>
+      <!-- place navbar here -->
+      <nav id="topnav" style="display: non; background-color: #041b2b; color: aliceblue; " class="navbar fixed-top" >
+        <div class="container-fluid">
+              <a> <span style="background-color: #ccdbe6; " class="navbar-toggler-icon" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"></span></a>
+              <a class="navbar-brand" href="#"><img src="/images/logo/logo.png" alt="Logo" width="120" height="40" class="d-inline-block align-text-top"> </a>
+              <a>
+                <i class="fa fa-bell" aria-hidden="true"></i>
+              </a>
+        </div>
+      </nav>
+    </header>
+  <script>
+    // function oofon(){
+    //   $("#onoff").prop('checked', true);
+    //   aa= $("#onoff").prop('checked');
+    //   alert(aa);
+    // }
+    function abcd(){
+      
+      var aa=$("#onoff").prop('checked')
+      
+      if(aa){
+        //////operation for true 
+        console.log("ture  onlone")
+        //$("#onoff").css({"background-color":"rgb(10, 123, 53)"})
+      }else{
+        console.log("false  offline")
+        //$("#onoff").css({"background-color":"#797575"})
+        //$("#onoff").css({"background-color":"rgb(10, 123, 53)"})
+        
+      }
+    }
+
+    function mrchSavechanges(userID){
+      var mrchTotalAmt =$("#mrchTotalAmt").val().trim();
+      var mrchUsdtRate =$("#mrchUsdtRate").val().trim();
+      var mrchOrderTime =$("#mrchOrderTime").val().trim();
+      var mrchLimitFrom =$("#mrchLimitFrom").val().trim();
+      var mrchLimitTo =$("#mrchLimitTo").val().trim();
+      var mrchType =$("#mrchType").val().trim();
+      $.post('/user/onlineOfflinemMerchant',{
+        userID:userID,
+        mrchTotalAmt:mrchTotalAmt,
+        mrchUsdtRate:mrchUsdtRate,
+        mrchOrderTime:mrchOrderTime,
+        mrchLimitFrom:mrchLimitFrom,
+        mrchLimitTo:mrchLimitTo,
+        mrchType:mrchType
+      },function(data){
+
+      });
+      
+    }
+
+    function editmerchantNickname(userID){
+        var newPasw = prompt("Enter Nick Name");
+        $.post('/user/editmerchantNickname',{
+          userID:userID,
+          merchantNickName:newPasw
+        },function(data){
+          merchantInit(userID);
+        });
+    }
+
+    var video='https://paacab.fra1.digitaloceanspaces.com/7bed40a276d6b86c6120e88381705d8c'
+    let position = text.search("https");
+
+
+
+
+
+              
+
+  </script>
+  <style>
+    
+  
+  </style>
+
+    <div id="topBacground"  style="background-color: #041b2b;  height: 25vh; display:none"></div>
+    
+   <div   id="view"   class="container-fluid  ">
+
+    <div class="card"  style="margin-top: 10vh; margin-bottom: 10vh; height: 80vh; overflow-y: auto; ">
+        <div class="card-header">
+          <button onclick="closeWithdral()" type="button" class="btn-close float-end"></button>
+        <h2>Order</h2> 
+        <div class="row">
+            <div class="col">
+                <span>Pending</span>
+            </div>
+            <div  class="col">
+                <span>Cancel</span>
+            </div>
+            <div class="col">
+                <span>Complete</span>
+            </div>
+        </div>
+        </div>
+      <div  class="card-body">
+        <ul class="list-group" style="background-color: #093b2c !important;">
+            <li class="list-group-item" aria-current="true" style="height: 20vh; background-color: rgb(50, 63, 63); border: none;">
+                <p style="font-size: small; color: #797575 !important;" class="text-dark">
+                    <span><i class="fa fa-user-circle" aria-hidden="true"></i></span> &nbsp; 
+                    <span style="font-size: larger; color: #fffbfb;"> marchant Name </span> &nbsp;
+                    <span style="color: #f1de0b;"><i class="fa fa-check-square" aria-hidden="true"></i></span>
+                    <br><span><i class="fa fa-hand-pointer-o" aria-hidden="true"></i> 100%</span> &nbsp; 
+                    <span><i class="fa fa-clock-o" aria-hidden="true"></i> 15 min</span>
+                    <span class="float-end">Cash Collections</span>
+                    <br> Payble Amount <span style="color: #fffbfb;">&#8377;2000.00</span>
+                    <br> Currceny Rate <span style="color: #fffbfb;">&#8377;0.99</span>
+                    <br> Order Amount <span style="color: #fffbfb;">&#8377;2020.00</span>
+                    <br><div class="float-end"> <span style="color: #fffbfb;">Time : 0:0:0</span>
+                    </div> 
+                    <input type="hidden" id="f" value="1">
+                  </p>\
+            </li>
+            
+        </ul>
+       
+      </div>
+    </div>
+
+
+
+   </div>
+
+   <script>
+    switch (1) {
+      case "GBP":
+      break; 
+      case "EUR":
+      break;
+      case "INR":
+        console.log("ok INR")
+      break; 
+      case "BDT":
+      break;
+      default:
+      break;  
+    }
+
+
+
+   </script>
+
+
+   </div>
+
+   
+
+   <!-- Dashboarb -->
+
+
+   </div>
+   
+
+    <footer>
+      <!-- place footer here -->
+      <nav id="footnav" style=" color: rgb(201, 181, 156); background-color: #041b2b !important; display: non;" class="navbar fixed-bottom bg-body-tertiary">
+        <div id="footerBody" class="container-fluid">
+        <div onclick="" style="text-align: center; font-size: small;" >
+          <i style="font-size: 30px;" class="fa fa-home" aria-hidden="true"></i>
+          <br>Home
+        </div>
+
+        <div style="text-align: center; font-size: small;" >
+          <i style="font-size: 30px;" class="fa fa-file-text" aria-hidden="true"></i>
+          <br>Transection
+        </div>
+
+        <div style="text-align: center; font-size: small;" >
+          <i style="font-size: 30px;" class="fa fa-btc" aria-hidden="true"></i>
+          <br>Currency
+        </div>
+
+        <div style="text-align: center; font-size: small;" >
+          <i style="font-size: 30px;" class="fa fa-cog" aria-hidden="true"></i>
+          <br>Setting
+        </div>
+
+        <div style="text-align: center; font-size: small;" >
+          <i style="font-size: 30px;" class="fa fa-life-ring" aria-hidden="true"></i>
+          <br>Help
+        </div>
+        
+        </div>
+      </nav>
+    </footer>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAA CRYPTO BANK - Peer-to-Peer and Merchant Accounts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+        header {
+            background: rgba(51, 51, 51, 0.8);
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #77aaff 3px solid;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            display: inline;
+            padding: 0 20px;
+        }
+        .main-content {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            margin: 20px 0;
+        }
+        .cta {
+            background: rgba(119, 170, 255, 0.9);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .cta a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        footer {
+            background: rgba(51, 51, 51, 0.8);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .footer-section {
+            flex: 1;
+            padding: 10px;
+            min-width: 200px;
+        }
+        .social-media a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .social-media a:hover {
+            text-decoration: underline;
+        }
+        .subscriber-form input[type="email"] {
+            padding: 10px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        .subscriber-form input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #77aaff;
+            color: #fff;
+            cursor: pointer;
+        }
+        .subscriber-form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .recommendations {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .recommendation {
+            background: #f4f4f4;
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 5px solid #77aaff;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop class="video-background">
+        <source src="/images/other/vd.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">Paa Crypto Bank</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#p2p">Peer-to-Peer</a></li>
+                    <li><a href="#merchant">Merchant</a></li>
+                    <li><a href="#why-choose-us">Why Choose Us</a></li>
+                    <li><a href="#join">Join Us</a></li> 
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="p2p" class="main-content">
+            <h2>Peer-to-Peer Accounts</h2>
+            <p>Unlock your potential with our Peer-to-Peer bank accounts:</p>
+            <ul>
+                <li><strong>Earning Potential:</strong> Earn Up to $1000 USD per Day with p2P trading </li>
+                <li><strong>Market you can trade:</strong> You can use your Account to trade with Binance P2P market place. </li>
+                <li><strong>No Fear Of Freezing Funds:</strong> Your money is always accessible</li>
+                <li><strong>Unlimited Withdrawal:</strong> Trade all over the world and withdraw in your local currency</li>
+                <li><strong>Global Trade:</strong> our magical currency converter allows you to trade all over the world</li>
+            </ul>
+            <p>Join now and start trading with confidence, knowing your funds are secure and your earnings potential is limitless.</p>
+        </section>
+
+        <section id="merchant" class="main-content">
+            <h2>Merchant Accounts</h2>
+            <p>Boost your business with our Merchant accounts:</p>
+            <ul>
+                <li><strong>High Earning Potential:</strong> Scale your earnings up to $1000-$5000 USD Per day</li>
+                <li><strong>Security:</strong> Enjoy peace of mind with no fear of fund freezing</li>
+                <li><strong>Flexible Withdrawals:</strong> Withdraw your earnings in your local currency anytime</li>
+                <li><strong>Global Reach:</strong> Expand your market and trade globally with ease</li>
+            </ul>
+            <p>Take your business to new heights with our reliable and secure merchant accounts.</p>
+        </section>
+
+        <section id="why-choose-us" class="main-content">
+            <h2>Why Choose Paa Crypto Bank?</h2>
+            <ul>
+                <li><strong>Secure Transactions:</strong> Advanced security measures to protect your funds</li>
+                <li><strong>User-Friendly Interface:</strong> Easy to navigate platform for both beginners and experts</li>
+                <li><strong>24/7 Customer Support:</strong> We're here to help you anytime you need</li>
+                <li><strong>Innovative Solutions:</strong> Stay ahead with our cutting-edge trading tools</li>
+            </ul>
+        </section>
+
+        <section id="recommendations" class="recommendations">
+            <h2>Customer Recommendations</h2>
+            <div class="recommendation">
+                <p>"PAA Crypto Bank has revolutionized the way I trade. The platform is intuitive and secure. I can trade confidently without worrying about my funds being frozen." - <strong>John Doe</strong></p>
+            </div>
+            <div class="recommendation">
+                <p>"As a merchant, PAA Crypto Bank has provided me with the tools I need to expand my business globally. The withdrawal process is seamless, and their support team is always there when I need them." - <strong>Jane Smith</strong></p>
+            </div>
+            <div class="recommendation">
+                <p>"I've been using PAA Crypto Bank for P2P trading for the past year, and my earnings have significantly increased. The platform's security features are top-notch." - <strong>Michael Lee</strong></p>
+            </div>
+        </section>
+
+        <section id="join" class="cta">
+            <h2>Join Us Today!</h2>
+            <p>Experience the freedom and potential of global trading with PAA Crypto Bank. Sign up now and start earning!</p>
+            <a href="https://paacryptobank.com/user/#">Sign Up Now</a>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h2>About Us</h2>
+                <p>PAA Crypto Bank is dedicated to providing secure and innovative financial solutions for peer-to-peer and merchant trading. Our mission is to empower users with the tools they need to succeed in the global marketplace.</p>
+            </div>
+            <div class="footer-section social-media">
+                <h2>Follow Us</h2>
+                <a href="https://www.facebook.com">Facebook</a>
+                <a href="https://www.twitter.com">Twitter</a>
+                <a href="https://web.telegram.org/k/#@paacryptobank">Telegram</a>
+                <a href="https://www.instagram.com">Instagram</a>
+            </div>
+            <div class="footer-section subscriber-form">
+                <h2>Subscribe</h2>
+                <form action="#" method="post">
+                    <input type="email" name="email" placeholder="Enter your email" required>
+                    <input type="submit" value="Subscribe">
+                </form>
+            </div>
+        </div>
+        <p>PAA CABS PRIVATE SRO &copy; 2024, All Rights Reserved</p>
+    </footer>
+</body>
+</html> -->
+
